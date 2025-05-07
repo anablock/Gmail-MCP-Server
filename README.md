@@ -5,6 +5,10 @@ A Model Context Protocol (MCP) server for Gmail integration in Claude Desktop wi
 ![](https://badge.mcpx.dev?type=server 'MCP Server')
 [![smithery badge](https://smithery.ai/badge/@gongrzhe/server-gmail-autoauth-mcp)](https://smithery.ai/server/@gongrzhe/server-gmail-autoauth-mcp)
 
+## About
+
+The Gmail AutoAuth MCP Server acts as a bridge between AI assistants like Claude and the Gmail API, enabling seamless email management through natural language. By implementing the Model Context Protocol (MCP), this server allows AI systems to perform complex Gmail operations without direct API access or complex integration.
+
 
 ## Features
 
@@ -350,6 +354,73 @@ The server intelligently extracts email content from complex MIME structures:
 The server fully supports non-ASCII characters in email subjects and content, including:
 - Turkish, Chinese, Japanese, Korean, and other non-Latin alphabets
 - Special characters and symbols
+
+## Architecture
+
+The Gmail AutoAuth MCP Server is built on a modular architecture with several key components:
+
+### Core Components
+
+1. **MCP Server Layer**
+   - Implements the Model Context Protocol interface
+   - Handles tool registration and request processing
+   - Manages the communication between AI assistants and the Gmail API
+
+2. **Authentication Module**
+   - Manages OAuth2 authentication flow with Gmail API
+   - Handles credential storage and renewal
+   - Supports both desktop and web application credentials
+
+3. **Email Processing Engine**
+   - Processes complex MIME message structures
+   - Handles attachments and international character encoding
+   - Manages email composition and sending
+
+4. **Label Management System**
+   - Provides specialized functionality for Gmail label operations
+   - Supports creating, updating, and deleting custom labels
+   - Enables organization and categorization of emails
+
+### Design Patterns
+
+The project utilizes several software design patterns:
+
+1. **Adapter Pattern**: Translates between MCP protocol requests and Gmail API calls
+2. **Command Pattern**: Each tool (send_email, read_email, etc.) encapsulates a specific operation
+3. **Factory Pattern**: For creating and managing email objects and requests
+4. **Batch Processing Pattern**: For efficient handling of multiple email operations
+
+### Technical Implementation
+
+- Built with TypeScript for type safety and better developer experience
+- Uses Zod for schema validation and request handling
+- Implements recursive content extraction for handling complex MIME email structures
+- Provides OAuth2 authentication with automatic browser launch
+- Supports both local and Docker deployments
+
+## Business Use Cases
+
+The Gmail AutoAuth MCP Server enables a wide range of business applications:
+
+### AI-Powered Email Management
+- Virtual assistants that can search, organize, and respond to emails
+- Automated email categorization and labeling systems
+- Email workflow automation (e.g., moving emails between labels based on content)
+
+### Customer Service Automation
+- AI systems that can review customer emails and draft responses
+- Automatic email triaging based on content analysis
+- Intelligent routing of emails to appropriate departments
+
+### Productivity Enhancement
+- AI-assisted email drafting and sending
+- Smart email organization and cleanup suggestions
+- Automatic follow-up management and reminders
+
+### Integration Possibilities
+- Connecting email operations with other business systems
+- Enabling voice assistants to interact with email systems
+- Building custom email workflows in AI applications
 - Proper encoding ensures correct display in email clients
 
 ### Comprehensive Label Management
